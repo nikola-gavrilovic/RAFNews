@@ -1,0 +1,376 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  <title>Hello World</title>-->
+<!--  <link rel="stylesheet"-->
+<!--        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"-->
+<!--        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"-->
+<!--        crossorigin="anonymous">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--  <a class="navbar-brand" href="#">Public Blog</a>-->
+<!--  <button class="navbar-toggler" type="button" data-toggle="collapse"-->
+<!--          data-target="#navbarSupportedContent"-->
+<!--          aria-controls="navbarSupportedContent" aria-expanded="false"-->
+<!--          aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
+
+<!--  <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--    <ul class="navbar-nav mr-auto">-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="/demo">Home page</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->
+
+
+<!--<div class="container">-->
+
+<!--  <br />-->
+
+<!--  <div id="post-comments"></div>-->
+
+<!--  <div id="post-comment-list"></div>-->
+
+<!--  <div id="post-comment-form-button"></div>-->
+
+
+
+<!--  <br />-->
+
+<!--  <div id="posts-links"></div>-->
+
+
+<!--  <br> <br>-->
+
+<!--  <button type="submit" class="btn btn-primary" id="new-post-btn">New Post</button>-->
+
+
+<!--  <form method="POST" id="subject-form" style="visibility: hidden">-->
+<!--    <div class="form-group">-->
+<!--      <br /> <label for="subject-author">Author</label> <input-->
+<!--            type="text" class="form-control" id="subject-author"-->
+<!--            placeholder="Enter author"> <br /> <label-->
+<!--            for="subject-title">Title</label> <input type="text"-->
+<!--                                                     class="form-control" id="subject-title" placeholder="Enter title">-->
+
+<!--      <br /> <label for="subject-content">Content</label>-->
+
+<!--      <textarea class="form-control" id="subject-content"></textarea>-->
+<!--    </div>-->
+
+<!--    <button type="submit" class="btn btn-primary" id="submit-btn-post">Save Post</button>-->
+<!--  </form>-->
+
+
+<!--  <script src="newpost.js"></script>-->
+
+<!--  &lt;!&ndash; 		<div id="subject-links"></div> &ndash;&gt;-->
+<!--</div>-->
+
+<!--<script>-->
+
+<!--  fetch('/demo/api/posts', {-->
+<!--    method: 'GET'-->
+<!--  }).then(response => {-->
+<!--    return response.json();-->
+<!--  }).then(subjects => {-->
+<!--    for (const subject of subjects) {-->
+<!--      addSubjectElements(subject)-->
+<!--    }-->
+<!--  })-->
+
+
+
+
+
+
+<!--  function addSubjectElements(subject) {-->
+<!--    const subjectLinks = document.getElementById('posts-links');-->
+
+<!--    const linkWrapperDiv = document.createElement('div');-->
+
+<!--    linkWrapperDiv.setAttribute("style", "border: 1px solid #ddd; padding-left: 15px; padding-right: 15px; padding-top: 10px;");-->
+
+<!--    let title = document.createElement("b");-->
+<!--    title.innerText = subject.title.toUpperCase();-->
+<!--    title.style.bold-->
+<!--    title.style.textAlign = "left";-->
+
+
+<!--    let day = document.createElement("p");-->
+<!--    day.innerText = subject.daysBefore;-->
+<!--    day.style.textAlign = "right";-->
+
+<!--    let content = document.createElement("p");-->
+<!--    content.innerText = subject.content;-->
+
+
+
+<!--    const subjectLink = document.createElement('u');-->
+
+<!--    subjectLink.innerText = "Read more...";-->
+
+<!--    subjectLink.onclick = function (e) {-->
+
+<!--      const form = document.getElementById('posts-links');-->
+
+<!--      form.style.visibility = 'hidden';-->
+
+<!--      const formbutton = document.getElementById('new-post-btn');-->
+
+<!--      formbutton.style.visibility = 'hidden';-->
+
+
+<!--      getPostById(subject.id);-->
+<!--    }-->
+
+
+
+<!--    linkWrapperDiv.appendChild(title);-->
+<!--    linkWrapperDiv.appendChild(day);-->
+<!--    linkWrapperDiv.appendChild(content);-->
+
+<!--    linkWrapperDiv.appendChild(document.createElement('br'));-->
+
+<!--    linkWrapperDiv.appendChild(subjectLink);-->
+<!--    linkWrapperDiv.appendChild(document.createElement('br'));-->
+<!--    linkWrapperDiv.appendChild(document.createElement('br'));-->
+
+<!--    subjectLinks.appendChild(linkWrapperDiv);-->
+<!--  }-->
+
+<!--  function getPostById(id) {-->
+<!--    return fetch('/demo/api/posts/'+id, {-->
+<!--      method: 'GET'-->
+<!--    }).then(response => {-->
+<!--      return response.json();-->
+<!--    }).then(post => {-->
+<!--      showCommentElements(post)-->
+<!--    })-->
+<!--  }-->
+
+
+
+<!--  function showCommentElements(post) {-->
+<!--    const postDiv = document.getElementById('post-comments');-->
+
+<!--    const postElementDiv = document.createElement('div');-->
+
+
+<!--    let title = document.createElement("b");-->
+<!--    title.innerText = post.title;-->
+<!--    postElementDiv.appendChild(title);-->
+<!--    postElementDiv.appendChild(document.createElement('br'));-->
+
+<!--    let date = document.createElement("p");-->
+
+<!--    let a = JSON.stringify(post.createdDate);-->
+
+<!--    let c = a.split(",");-->
+
+<!--    date.innerText = c[2].slice(0, -1) + '.' + c[1] + '.' + c[0].slice(1, 5);-->
+
+
+<!--    postElementDiv.appendChild(date);-->
+<!--    postElementDiv.appendChild(document.createElement('br'));-->
+
+<!--    let author = document.createElement("p");-->
+<!--    author.innerText = post.author;-->
+<!--    postElementDiv.appendChild(author);-->
+
+<!--    let content = document.createElement("p");-->
+<!--    content.innerText = post.content;-->
+<!--    postElementDiv.appendChild(content);-->
+<!--    postElementDiv.appendChild(document.createElement('br'));-->
+
+<!--    postDiv.appendChild(postElementDiv);-->
+
+
+
+<!--    const commentsDiv = document.getElementById('post-comment-list');-->
+<!--    const commentsListDiv = document.createElement('div');-->
+
+
+<!--    let cmt = document.createElement("h5");-->
+<!--    cmt.innerText = "Comments";-->
+<!--    commentsListDiv.appendChild(cmt);-->
+<!--    commentsListDiv.appendChild(document.createElement('br'));-->
+
+<!--    commentsDiv.appendChild(commentsListDiv);-->
+
+
+<!--    let comments = post.comments;-->
+
+<!--    for (const comment of comments) {-->
+<!--      const wrapDiv = document.createElement('div');-->
+<!--      wrapDiv.setAttribute("id", "wrap-id");-->
+
+
+<!--      let name = document.createElement("b");-->
+<!--      name.innerText = comment.name;-->
+<!--      wrapDiv.appendChild(name);-->
+<!--      wrapDiv.appendChild(document.createElement('br'));-->
+
+<!--      let text = document.createElement("p");-->
+<!--      text.innerText = comment.comment;-->
+<!--      wrapDiv.appendChild(text);-->
+<!--      wrapDiv.appendChild(document.createElement('br'));-->
+
+<!--      commentsListDiv.appendChild(wrapDiv);-->
+<!--    }-->
+
+
+
+<!--    // Create a form and button for adding new comment-->
+
+<!--    const commentForm = document.getElementById('post-comment-form-button');-->
+<!--    const commentFormDiv = document.createElement('div');-->
+
+
+<!--    let form = document.createElement("form");-->
+<!--    form.setAttribute("id", "comment-form");-->
+<!--    form.setAttribute("method", "put");-->
+<!--    form.setAttribute("action", "/demo/api/posts" + post.id);-->
+
+
+<!--    let newcomment = document.createElement("h5");-->
+<!--    newcomment.innerText = "New Comment";-->
+
+<!--    let labelName = document.createElement("p");-->
+<!--    labelName.innerText = "Name";-->
+
+
+<!--    let name = document.createElement("input");-->
+<!--    name.setAttribute("id", "comment-name");-->
+<!--    name.setAttribute("type", "text");-->
+<!--    name.setAttribute("name", "Name");-->
+<!--    //name.setAttribute("placeholder", "name");-->
+
+
+<!--    let labelComment = document.createElement("p");-->
+<!--    labelComment.innerText = "Comment";-->
+
+<!--    let commenttext = document.createElement("textarea");-->
+<!--    commenttext.setAttribute("type", "text");-->
+<!--    commenttext.setAttribute("cols", "150");-->
+<!--    commenttext.setAttribute("rows", "5");-->
+<!--    commenttext.setAttribute("name", "Comment");-->
+<!--    commenttext.setAttribute("id", "comment-comment");-->
+<!--    // commenttext.setAttribute("placeholder", "comment");-->
+
+
+<!--    let buttondiv = document.createElement("div");-->
+
+<!--    const saveCommentBtn = document.createElement('button');-->
+<!--    saveCommentBtn.innerText = 'Comment'-->
+<!--    saveCommentBtn.classList.add('btn', 'btn-primary')-->
+<!--    buttondiv.append(saveCommentBtn);-->
+<!--    buttondiv.setAttribute("id", "bd-id");-->
+
+
+
+<!--    commentFormDiv.appendChild(form);-->
+<!--    commentFormDiv.appendChild(newcomment);-->
+<!--    commentFormDiv.appendChild(labelName);-->
+<!--    commentFormDiv.appendChild(name);-->
+<!--    commentFormDiv.appendChild(document.createElement('br'));-->
+<!--    commentFormDiv.appendChild(labelComment);-->
+<!--    commentFormDiv.appendChild(commenttext);-->
+<!--    commentFormDiv.appendChild(document.createElement('br'));-->
+<!--    commentFormDiv.appendChild(document.createElement('br'));-->
+<!--    commentFormDiv.appendChild(saveCommentBtn);-->
+
+<!--    commentForm.appendChild(commentFormDiv);-->
+
+
+
+<!--    saveCommentBtn.onclick = function (e) {-->
+<!--      const nameElement = document.getElementById('comment-name');-->
+<!--      const commentElement = document.getElementById('comment-comment');-->
+
+<!--      const name = nameElement.value;-->
+<!--      const comment = commentElement.value;-->
+
+<!--      fetch('/demo/api/posts/' + post.id, {-->
+<!--        method: 'PUT',-->
+<!--        headers: {-->
+<!--          'Content-Type': 'application/json'-->
+<!--        },-->
+<!--        body: JSON.stringify({-->
+<!--          name: name,-->
+<!--          comment: comment-->
+<!--        })-->
+<!--      }).then(response => {-->
+<!--        return response.json();-->
+<!--      }).then(response => {-->
+<!--        const wrapDiv = document.getElementById('wrap-id');-->
+
+
+<!--        nameElement.value = '';-->
+<!--        commentElement.value = '';-->
+
+<!--        let name = document.createElement("b");-->
+<!--        name.innerText = response.name;-->
+<!--        commentsListDiv.appendChild(name);-->
+<!--        commentsListDiv.appendChild(document.createElement('br'));-->
+
+<!--        let text = document.createElement("p");-->
+<!--        text.innerText = response.comment;-->
+<!--        commentsListDiv.appendChild(text);-->
+<!--        commentsListDiv.appendChild(document.createElement('br'));-->
+
+<!--        commentsDiv.appendChild(commentsListDiv);-->
+
+<!--      })-->
+
+
+
+<!--    }-->
+<!--  }-->
+
+
+
+
+
+<!--  document.getElementById("subject-form").addEventListener('submit', function(e) {-->
+<!--    e.preventDefault();-->
+
+<!--    const postAuthorElement = document.getElementById('subject-author');-->
+<!--    const subjectTitleElement = document.getElementById('subject-title');-->
+<!--    const contentElement = document.getElementById('subject-content');-->
+
+<!--    const author = postAuthorElement.value;-->
+<!--    const title = subjectTitleElement.value;-->
+<!--    const content = contentElement.value;-->
+
+<!--    fetch('/demo/api/posts', {-->
+<!--      method: 'POST',-->
+<!--      headers: {-->
+<!--        'Content-Type': 'application/json'-->
+<!--      },-->
+<!--      body: JSON.stringify({-->
+<!--        author: author,-->
+<!--        title: title,-->
+<!--        content: content-->
+<!--      })-->
+<!--    }).then(response => {-->
+<!--      return response.json();-->
+<!--    }).then(subject => {-->
+<!--      addSubjectElements(subject)-->
+<!--      postAuthorElement.value = '';-->
+<!--      subjectTitleElement.value = '';-->
+<!--      contentElement.value = '';-->
+<!--    })-->
+<!--  })-->
+
+
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+

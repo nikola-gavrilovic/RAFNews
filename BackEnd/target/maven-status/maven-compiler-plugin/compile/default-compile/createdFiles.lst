@@ -1,0 +1,15 @@
+rs\raf\demo\repositories\InMemoryPostRepository.class
+rs\raf\demo\entities\Post.class
+rs\raf\demo\repositories\IPostRepository.class
+rs\raf\demo\repositories\InMemoryCommentRepository.class
+rs\raf\demo\entities\Comment.class
+rs\raf\demo\services\CommentService.class
+rs\raf\demo\HelloApplication$1.class
+rs\raf\demo\repositories\MySQLPostRepository.class
+rs\raf\demo\repositories\MySqlAbstractRepository.class
+rs\raf\demo\HelloApplication.class
+rs\raf\demo\repositories\MySQLCommentRepository.class
+rs\raf\demo\services\PostService.class
+rs\raf\demo\resources\CommentResource.class
+rs\raf\demo\repositories\ICommentRepository.class
+rs\raf\demo\resources\PostResource.class
